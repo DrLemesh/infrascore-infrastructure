@@ -51,3 +51,14 @@ output "pgadmin_url" {
   description = "The public URL for the PgAdmin Dashboard"
   value       = module.application.pgadmin_service_hostname
 }
+
+# --- S3 Backup ---
+output "s3_backup_bucket_name" {
+  description = "The name of the S3 bucket for database backups (manually created)"
+  value       = data.aws_s3_bucket.backups.id
+}
+
+output "s3_backup_bucket_arn" {
+  description = "The ARN of the S3 bucket for database backups (manually created)"
+  value       = data.aws_s3_bucket.backups.arn
+}

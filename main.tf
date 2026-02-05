@@ -44,3 +44,4 @@ module "application" {
 
   depends_on = [module.eks, module.ecr, module.helm_addons]
 }
+
