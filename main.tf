@@ -34,14 +34,16 @@ module "helm_addons" {
   depends_on = [module.eks]
 }
 
-module "application" {
-  source         = "./modules/application"
-  project_name   = var.project_name
-  backend_image  = module.ecr.backend_repo_url
-  frontend_image = module.ecr.frontend_repository_url
-  db_image       = module.ecr.db_repository_url
-  pgadmin_image  = module.ecr.pgadmin_repository_url
-
-  depends_on = [module.eks, module.ecr, module.helm_addons]
-}
-
+# module "application" {
+#   source         = "./modules/application"
+#   project_name   = var.project_name
+#   backend_image  = module.ecr.backend_repo_url
+#   frontend_image = module.ecr.frontend_repository_url
+#   db_image       = module.ecr.db_repository_url
+#   pgadmin_image  = module.ecr.pgadmin_repository_url
+#
+#   db_password      = var.db_password
+#   pgadmin_password = var.pgadmin_password
+#
+#   depends_on = [module.eks, module.ecr, module.helm_addons]
+# }

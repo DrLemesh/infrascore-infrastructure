@@ -12,7 +12,7 @@ resource "kubernetes_secret" "db_credentials" {
 
   data = {
     POSTGRES_USER     = "postgres"
-    POSTGRES_PASSWORD = "password123"
+    POSTGRES_PASSWORD = var.db_password
     POSTGRES_DB       = "infrascore"
   }
 }
@@ -110,7 +110,7 @@ resource "kubernetes_deployment" "pgadmin" {
           }
           env {
             name  = "PGADMIN_DEFAULT_PASSWORD"
-            value = "admin123"
+            value = var.pgadmin_password
           }
         }
       }

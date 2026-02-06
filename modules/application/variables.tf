@@ -28,3 +28,15 @@ variable "pgadmin_image" {
   description = "ECR URL for pgadmin image"
   type        = string
 }
+
+variable "db_password" {
+  description = "Password for the PostgreSQL database"
+  type        = string
+  sensitive   = true
+}
+
+variable "pgadmin_password" {
+  description = "Password for PgAdmin default user"
+  type        = string
+  sensitive   = true
+}
