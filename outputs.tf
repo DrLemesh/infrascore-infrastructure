@@ -42,15 +42,15 @@ output "grafana_url" {
 }
 
 # --- Application ---
-output "frontend_url" {
-  description = "The public URL for the Frontend Application"
-  value       = module.application.frontend_service_hostname
-}
-
-output "pgadmin_url" {
-  description = "The public URL for the PgAdmin Dashboard"
-  value       = module.application.pgadmin_service_hostname
-}
+# output "frontend_url" {
+#   description = "The public URL for the Frontend Application"
+#   value       = module.application.frontend_service_hostname
+# }
+# 
+# output "pgadmin_url" {
+#   description = "The public URL for the PgAdmin Dashboard"
+#   value       = module.application.pgadmin_service_hostname
+# }
 
 # --- S3 Backup ---
 output "s3_backup_bucket_name" {

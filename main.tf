@@ -24,6 +24,7 @@ module "eks" {
   subnet_ids       = module.networking.public_subnet_ids
   cluster_role_arn = module.iam.eks_cluster_role_arn
   node_role_arn    = module.iam.eks_nodes_role_arn
+  ci_user_arn      = var.ci_user_arn
 }
 
 module "helm_addons" {

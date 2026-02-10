@@ -2,14 +2,8 @@ variable "project_name" {
   default = "infrascore"
 }
 
-variable "db_password" {
-  description = "Password for the PostgreSQL database"
-  type        = string
-  sensitive   = true
+variable "ci_user_arn" {
+  description = "IAM User ARN for CI/CD (GitHub Actions)"
+  default     = "arn:aws:iam::941464113257:user/gh-actions-user"
 }
 
-variable "pgadmin_password" {
-  description = "Password for PgAdmin default user"
-  type        = string
-  sensitive   = true
-}

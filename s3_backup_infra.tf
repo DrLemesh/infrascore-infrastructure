@@ -7,11 +7,6 @@ data "aws_s3_bucket" "backups" {
 # יצירת ה-IAM Role ישירות (ללא שימוש במודול)
 # זה פותר את בעיית התאימות של גרסאות המודול
 
-# קבלת OIDC provider URL מה-EKS cluster
-data "aws_eks_cluster" "cluster" {
-  name = module.eks.cluster_name
-}
-
 # יצירת ה-IAM Role
 resource "aws_iam_role" "s3_backup_role" {
   name = "infrascore-s3-backup-role"
@@ -27,7 +22,7 @@ resource "aws_iam_role" "s3_backup_role" {
         Action = "sts:AssumeRoleWithWebIdentity"
         Condition = {
           StringEquals = {
-            "${replace(data.aws_eks_cluster.cluster.identity[0].oidc[0].issuer, "https://", "")}:sub" = "system:serviceaccount:default:postgres-sa"
+            "${replace(module.eks.oidc_issuer_url, "https://", "")}:sub" = "system:serviceaccount:default:postgres-sa"
           }
         }
       }
