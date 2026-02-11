@@ -19,3 +19,15 @@ variable "pgadmin_password" {
   default     = "ChangeMe123!"
 }
 
+variable "gemini_api_key" {
+  description = "API Key for Gemini AI grading service"
+  type        = string
+  sensitive   = true
+}
+
+variable "pgadmin_email" {
+  description = "Default email for pgAdmin login"
+  type        = string
+  default     = "admin@admin.com"
+}
+
