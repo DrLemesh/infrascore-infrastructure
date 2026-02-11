@@ -22,7 +22,7 @@ resource "aws_iam_role" "s3_backup_role" {
         Action = "sts:AssumeRoleWithWebIdentity"
         Condition = {
           StringEquals = {
-            "${replace(module.eks.oidc_issuer_url, "https://", "")}:sub" = "system:serviceaccount:default:postgres-sa"
+            "${replace(module.eks.oidc_issuer_url, "https://", "")}:sub" = "system:serviceaccount:prod:infrascore-db-sa"
           }
         }
       }

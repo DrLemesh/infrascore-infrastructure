@@ -7,7 +7,8 @@ data "kubernetes_service" "argocd_server" {
 }
 
 output "argocd_url" {
-  value = data.kubernetes_service.argocd_server.status.0.load_balancer.0.ingress.0.hostname
+  description = "The public URL for the ArgoCD Server"
+  value       = try(data.kubernetes_service.argocd_server.status[0].load_balancer[0].ingress[0].hostname, "pending")
 }
 
 data "kubernetes_service" "grafana" {
@@ -19,5 +20,6 @@ data "kubernetes_service" "grafana" {
 }
 
 output "grafana_url" {
-  value = data.kubernetes_service.grafana.status.0.load_balancer.0.ingress.0.hostname
+  description = "The public URL for Grafana"
+  value       = try(data.kubernetes_service.grafana.status[0].load_balancer[0].ingress[0].hostname, "pending")
 }

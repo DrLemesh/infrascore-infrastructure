@@ -1,23 +1,8 @@
-# --- ECR Outputs ---
-output "backend_repository_url" {
-  description = "The URL of the backend ECR repository"
-  value       = module.ecr.backend_repo_url
-}
-
-output "frontend_repository_url" {
-  description = "The URL of the frontend ECR repository"
-  value       = module.ecr.frontend_repository_url
-}
-
-output "db_repository_url" {
-  description = "The URL of the DB ECR repository"
-  value       = module.ecr.db_repository_url
-}
-
-output "pgadmin_repository_url" {
-  description = "The URL of the PgAdmin ECR repository"
-  value       = module.ecr.pgadmin_repository_url
-}
+# --- ECR Outputs (now static, managed outside Terraform) ---
+# backend: 941464113257.dkr.ecr.us-east-1.amazonaws.com/infrascore-backend
+# frontend: 941464113257.dkr.ecr.us-east-1.amazonaws.com/infrascore-frontend
+# db: 941464113257.dkr.ecr.us-east-1.amazonaws.com/infrascore-db
+# pgadmin: 941464113257.dkr.ecr.us-east-1.amazonaws.com/infrascore-pgadmin
 
 # --- EKS & Connectivity ---
 output "cluster_name" {
@@ -32,21 +17,21 @@ output "update_kubeconfig_command" {
 
 # --- ArgoCD ---
 output "argocd_url" {
-  description = "ArgoCD UI Public URL"
+  description = "The public URL for the ArgoCD Server"
   value       = module.helm_addons.argocd_url
 }
 
 output "grafana_url" {
-  description = "Grafana Dashboard Public URL"
+  description = "The public URL for Grafana"
   value       = module.helm_addons.grafana_url
 }
 
-# --- Application ---
+# --- Application URLs (commented out - using Helm now) ---
 # output "frontend_url" {
 #   description = "The public URL for the Frontend Application"
 #   value       = module.application.frontend_service_hostname
 # }
-# 
+#
 # output "pgadmin_url" {
 #   description = "The public URL for the PgAdmin Dashboard"
 #   value       = module.application.pgadmin_service_hostname

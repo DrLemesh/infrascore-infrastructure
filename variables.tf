@@ -7,3 +7,15 @@ variable "ci_user_arn" {
   default     = "arn:aws:iam::941464113257:user/gh-actions-user"
 }
 
+variable "db_password" {
+  description = "Password for the database"
+  type        = string
+  default     = "ChangeMe123!"
+}
+
+variable "pgadmin_password" {
+  description = "Password for pgAdmin"
+  type        = string
+  default     = "ChangeMe123!"
+}
+
